@@ -13,7 +13,6 @@ Create Date: 2024-07-15 10:00:00.000000
 from alembic import op
 import sqlalchemy as sa
 from sqlalchemy.dialects import postgresql
-import geoalchemy2
 
 # revision identifiers
 revision = "001"
@@ -23,9 +22,6 @@ depends_on = None
 
 
 def upgrade() -> None:
-    # Enable PostGIS extension
-    op.execute("CREATE EXTENSION IF NOT EXISTS postgis")
-
     # -------------------------------------------------------------------------
     # site_profiles
     # -------------------------------------------------------------------------
@@ -50,7 +46,7 @@ def upgrade() -> None:
         sa.Column("id", sa.Integer(), nullable=False),
         sa.Column("site_id", sa.Integer(), nullable=False),
         sa.Column("name", sa.String(256), nullable=False),
-        sa.Column("point_geom", geoalchemy2.types.Geometry(geometry_type="POINT", srid=4326), nullable=True),
+        sa.Column("point_geom", sa.Text(), nullable=True),
         sa.Column("elevation_m", sa.Float(), nullable=True),
         sa.Column("notes", sa.Text(), nullable=True),
         sa.ForeignKeyConstraint(["site_id"], ["site_profiles.id"], ondelete="CASCADE"),
@@ -65,7 +61,7 @@ def upgrade() -> None:
         sa.Column("id", sa.Integer(), nullable=False),
         sa.Column("site_id", sa.Integer(), nullable=False),
         sa.Column("name", sa.String(256), nullable=False),
-        sa.Column("point_geom", geoalchemy2.types.Geometry(geometry_type="POINT", srid=4326), nullable=True),
+        sa.Column("point_geom", sa.Text(), nullable=True),
         sa.Column("elevation_m", sa.Float(), nullable=True),
         sa.Column("notes", sa.Text(), nullable=True),
         sa.ForeignKeyConstraint(["site_id"], ["site_profiles.id"], ondelete="CASCADE"),
@@ -81,7 +77,7 @@ def upgrade() -> None:
         sa.Column("site_id", sa.Integer(), nullable=False),
         sa.Column("feature_type", sa.Enum("ridge", "valley", "bowl", "riverbed", "tree_line", "rotor_zone", "sink_zone", name="terrain_feature_type", create_type=False), nullable=False),
         sa.Column("name", sa.String(256), nullable=False),
-        sa.Column("geom", geoalchemy2.types.Geometry(geometry_type="GEOMETRY", srid=4326), nullable=True),
+        sa.Column("geom", sa.Text(), nullable=True),
         sa.Column("attributes_json", sa.Text(), nullable=True),
         sa.Column("notes", sa.Text(), nullable=True),
         sa.ForeignKeyConstraint(["site_id"], ["site_profiles.id"], ondelete="CASCADE"),
@@ -147,8 +143,8 @@ def upgrade() -> None:
         sa.Column("segment_type", sa.Enum("climb", "glide", "sink", "thermal_core", name="segment_type", create_type=False), nullable=False),
         sa.Column("start_time", sa.DateTime(timezone=True), nullable=True),
         sa.Column("end_time", sa.DateTime(timezone=True), nullable=True),
-        sa.Column("start_point_geom", geoalchemy2.types.Geometry(geometry_type="POINT", srid=4326), nullable=True),
-        sa.Column("end_point_geom", geoalchemy2.types.Geometry(geometry_type="POINT", srid=4326), nullable=True),
+        sa.Column("start_point_geom", sa.Text(), nullable=True),
+        sa.Column("end_point_geom", sa.Text(), nullable=True),
         sa.Column("path_geojson", sa.Text(), nullable=True),
         sa.Column("avg_vario_ms", sa.Float(), nullable=True),
         sa.Column("max_altitude_m", sa.Float(), nullable=True),

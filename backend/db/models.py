@@ -9,7 +9,6 @@ and type annotations.
 from datetime import date, datetime
 from typing import TYPE_CHECKING
 
-from geoalchemy2 import Geometry
 from sqlalchemy import (
     Date,
     DateTime,
@@ -92,7 +91,7 @@ class Launch(Base):
     id: Mapped[int] = mapped_column(Integer, primary_key=True)
     site_id: Mapped[int] = mapped_column(Integer, ForeignKey("site_profiles.id", ondelete="CASCADE"), nullable=False)
     name: Mapped[str] = mapped_column(String(256), nullable=False)
-    point_geom = mapped_column(Geometry(geometry_type="POINT", srid=4326), nullable=True)
+    point_geom = mapped_column(Text, nullable=True)  # GeoJSON point, PostGIS deferred to Phase 4
     elevation_m: Mapped[float | None] = mapped_column(Float, nullable=True)
     notes: Mapped[str | None] = mapped_column(Text, nullable=True)
 
@@ -112,7 +111,7 @@ class Landing(Base):
     id: Mapped[int] = mapped_column(Integer, primary_key=True)
     site_id: Mapped[int] = mapped_column(Integer, ForeignKey("site_profiles.id", ondelete="CASCADE"), nullable=False)
     name: Mapped[str] = mapped_column(String(256), nullable=False)
-    point_geom = mapped_column(Geometry(geometry_type="POINT", srid=4326), nullable=True)
+    point_geom = mapped_column(Text, nullable=True)  # GeoJSON point, PostGIS deferred to Phase 4
     elevation_m: Mapped[float | None] = mapped_column(Float, nullable=True)
     notes: Mapped[str | None] = mapped_column(Text, nullable=True)
 
@@ -133,7 +132,7 @@ class TerrainFeature(Base):
     site_id: Mapped[int] = mapped_column(Integer, ForeignKey("site_profiles.id", ondelete="CASCADE"), nullable=False, index=True)
     feature_type: Mapped[str] = mapped_column(TerrainFeatureType, nullable=False)
     name: Mapped[str] = mapped_column(String(256), nullable=False)
-    geom = mapped_column(Geometry(geometry_type="GEOMETRY", srid=4326), nullable=True)
+    geom = mapped_column(Text, nullable=True)  # GeoJSON geometry, PostGIS deferred to Phase 4
     attributes_json: Mapped[str | None] = mapped_column(Text, nullable=True)
     notes: Mapped[str | None] = mapped_column(Text, nullable=True)
 
@@ -220,8 +219,8 @@ class FlightSegment(Base):
     segment_type: Mapped[str] = mapped_column(SegmentType, nullable=False, index=True)
     start_time: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
     end_time: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
-    start_point_geom = mapped_column(Geometry(geometry_type="POINT", srid=4326), nullable=True)
-    end_point_geom = mapped_column(Geometry(geometry_type="POINT", srid=4326), nullable=True)
+    start_point_geom = mapped_column(Text, nullable=True)  # GeoJSON point, PostGIS deferred to Phase 4
+    end_point_geom = mapped_column(Text, nullable=True)  # GeoJSON point, PostGIS deferred to Phase 4
     path_geojson: Mapped[str | None] = mapped_column(Text, nullable=True)
     avg_vario_ms: Mapped[float | None] = mapped_column(Float, nullable=True)
     max_altitude_m: Mapped[float | None] = mapped_column(Float, nullable=True)

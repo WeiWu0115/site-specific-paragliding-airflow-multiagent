@@ -1,13 +1,14 @@
 """
-Spatial queries for terrain features using PostGIS and SQLAlchemy.
+Spatial queries for terrain features.
 
 Provides helpers for proximity queries, thermal candidate retrieval,
-and risk zone lookups using GeoAlchemy2 + PostGIS ST_ functions.
+and risk zone lookups. PostGIS deferred to Phase 4 — currently uses
+simple DB queries without spatial indexing.
 """
 
+import json
 from typing import Any
 
-from geoalchemy2.functions import ST_DWithin, ST_MakePoint, ST_SetSRID
 from loguru import logger
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -17,9 +18,10 @@ from db.models import TerrainFeature
 
 class SpatialQueries:
     """
-    PostGIS-backed spatial query helpers for terrain feature retrieval.
+    Terrain feature query helpers.
 
-    All methods return dicts (not ORM objects) for easy JSON serialization.
+    Phase 1: simple attribute-based queries (no PostGIS).
+    Phase 4: upgrade to PostGIS ST_ functions for spatial indexing.
     """
 
     @staticmethod
@@ -30,33 +32,13 @@ class SpatialQueries:
         db: AsyncSession,
     ) -> list[dict[str, Any]]:
         """
-        Return terrain features within radius_m meters of the given lat/lon.
+        Return terrain features near the given lat/lon.
 
-        Uses PostGIS ST_DWithin for efficient spatial indexing.
-
-        Args:
-            lat: Search center latitude
-            lon: Search center longitude
-            radius_m: Search radius in meters
-            db: Async SQLAlchemy session
-
-        Returns:
-            List of terrain feature dicts with spatial data
+        Phase 1: returns all features (spatial filtering deferred to Phase 4).
         """
-        # Convert radius from meters to degrees (approximate, valid at mid-latitudes)
-        # 1 degree ≈ 111,000m
-        radius_deg = radius_m / 111000.0
-
-        point = ST_SetSRID(ST_MakePoint(lon, lat), 4326)
-
-        result = await db.execute(
-            select(TerrainFeature).where(
-                ST_DWithin(TerrainFeature.geom, point, radius_deg)
-            )
-        )
+        result = await db.execute(select(TerrainFeature))
         features = result.scalars().all()
-
-        logger.debug(f"SpatialQueries.get_features_near: {len(features)} features within {radius_m}m of ({lat},{lon})")
+        logger.debug(f"SpatialQueries.get_features_near: {len(features)} features (spatial filter deferred)")
         return _features_to_dicts(features)
 
     @staticmethod
@@ -68,13 +50,6 @@ class SpatialQueries:
         Return terrain features that are candidates for thermal generation.
 
         Includes: ridge, bowl, riverbed (south-facing terrain + heating surfaces).
-
-        Args:
-            site_id: DB site profile ID
-            db: Async SQLAlchemy session
-
-        Returns:
-            List of terrain feature dicts
         """
         result = await db.execute(
             select(TerrainFeature).where(
@@ -95,13 +70,6 @@ class SpatialQueries:
         Return terrain features classified as hazardous zones.
 
         Includes: rotor_zone, sink_zone, tree_line.
-
-        Args:
-            site_id: DB site profile ID
-            db: Async SQLAlchemy session
-
-        Returns:
-            List of terrain feature dicts
         """
         result = await db.execute(
             select(TerrainFeature).where(
@@ -116,7 +84,6 @@ class SpatialQueries:
 
 def _features_to_dicts(features: list[TerrainFeature]) -> list[dict[str, Any]]:
     """Convert ORM TerrainFeature objects to serializable dicts."""
-    import json
     result = []
     for f in features:
         d = {
