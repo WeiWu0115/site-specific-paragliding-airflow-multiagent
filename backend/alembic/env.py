@@ -41,8 +41,9 @@ target_metadata = Base.metadata
 # Override sqlalchemy.url from environment variable
 database_url = os.environ.get("DATABASE_URL", "")
 if database_url:
-    # Convert asyncpg URL to sync for alembic if needed
-    # Alembic uses sync engine by default, but we configure async below
+    # Railway/Render provide postgresql:// but asyncpg needs postgresql+asyncpg://
+    if database_url.startswith("postgresql://"):
+        database_url = database_url.replace("postgresql://", "postgresql+asyncpg://", 1)
     config.set_main_option("sqlalchemy.url", database_url)
 
 

@@ -1,0 +1,56 @@
+databases:
+  - name: paraglide-db
+    plan: free
+    databaseName: paraglide_db
+    user: paraglide
+    postgresMajorVersion: "15"
+    ipAllowList: []
+
+services:
+  # --- Redis ---
+  - type: redis
+    name: paraglide-redis
+    plan: free
+    ipAllowList: []
+    maxmemoryPolicy: allkeys-lru
+
+  # --- FastAPI Backend ---
+  - type: web
+    name: paraglide-backend
+    runtime: docker
+    plan: free
+    dockerfilePath: ./backend/Dockerfile
+    dockerContext: ./backend
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: paraglide-db
+          property: connectionURI
+      - key: REDIS_URL
+        fromService:
+          name: paraglide-redis
+          type: redis
+          property: connectionURI
+      - key: WEATHER_PROVIDER
+        value: mock
+      - key: CLOUD_PROVIDER
+        value: mock
+      - key: SITE_ID
+        value: eagle_ridge
+      - key: LOG_LEVEL
+        value: INFO
+    healthCheckPath: /docs
+
+  # --- Next.js Frontend ---
+  - type: web
+    name: paraglide-frontend
+    runtime: docker
+    plan: free
+    dockerfilePath: ./frontend/web/Dockerfile
+    dockerContext: ./frontend/web
+    envVars:
+      - key: NEXT_PUBLIC_API_URL
+        fromService:
+          name: paraglide-backend
+          type: web
+          property: host
