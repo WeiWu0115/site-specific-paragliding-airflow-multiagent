@@ -75,6 +75,7 @@ class Settings(BaseSettings):
     @field_validator("database_url")
     @classmethod
     def validate_database_url(cls, v: str) -> str:
+        v = v.strip()
         if not v.startswith("postgresql"):
             raise ValueError("DATABASE_URL must be a PostgreSQL URL")
         # Railway/Render provide postgresql:// but asyncpg needs postgresql+asyncpg://

@@ -39,7 +39,7 @@ if config.config_file_name is not None:
 target_metadata = Base.metadata
 
 # Override sqlalchemy.url from environment variable
-database_url = os.environ.get("DATABASE_URL", "")
+database_url = os.environ.get("DATABASE_URL", "").strip()
 if database_url:
     # Railway/Render provide postgresql:// but asyncpg needs postgresql+asyncpg://
     if database_url.startswith("postgresql://"):
