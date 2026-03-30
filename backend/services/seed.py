@@ -20,7 +20,7 @@ import json
 import os
 import sys
 
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "backend"))
+# sys.path not needed when imported as a module within backend
 
 from loguru import logger
 from sqlalchemy import select
@@ -34,7 +34,7 @@ if DATABASE_URL.startswith("postgresql://"):
     DATABASE_URL = DATABASE_URL.replace("postgresql://", "postgresql+asyncpg://", 1)
 
 PROFILE_PATH = os.path.join(
-    os.path.dirname(__file__), "..", "backend", "config", "site_profiles", "eagle_ridge.json"
+    os.path.dirname(__file__), "..", "config", "site_profiles", "eagle_ridge.json"
 )
 
 

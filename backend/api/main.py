@@ -103,6 +103,31 @@ async def startup_event() -> None:
     except Exception as e:
         logger.error(f"Failed to load site profile: {e}")
 
+    # Auto-seed if database is empty
+    try:
+        from db.session import get_session_factory
+        from db.models import SiteProfile
+        from sqlalchemy import select
+
+        session_factory = get_session_factory()
+        async with session_factory() as session:
+            result = await session.execute(
+                select(SiteProfile).where(SiteProfile.slug == settings.site_id)
+            )
+            if result.scalar_one_or_none() is None:
+                logger.info("Database empty — running auto-seed...")
+                # Import and run seed logic inline
+                from services.seed import seed
+                with open(settings.site_profile_path) as f:
+                    profile_data = json.load(f)
+                await seed(session, profile_data)
+                await session.commit()
+                logger.info("Auto-seed complete!")
+            else:
+                logger.info(f"Site '{settings.site_id}' already seeded.")
+    except Exception as e:
+        logger.error(f"Auto-seed failed: {e}")
+
     logger.info(f"API listening on {settings.api_host}:{settings.api_port}")
     logger.warning(f"ADVISORY: {ADVISORY_DISCLAIMER}")
     logger.info("=" * 60)
