@@ -1,0 +1,58 @@
+{
+  "site_id": "eagle_ridge",
+  "generated_at": "2025-06-15T12:00:00Z",
+  "caution_zones": [
+    {
+      "title": "West Lee Sink — Rotor Risk",
+      "description": "Mechanical turbulence in the direct lee of Pine Tree Line. Active whenever surface westerly > 20 km/h. Expect strong asymmetric gusts and sink up to -4 m/s.",
+      "confidence": 0.82,
+      "caution_type": "ROTOR_RISK",
+      "conflict_description": null,
+      "feature_name": "West Lee Sink Zone",
+      "render_hints": {
+        "color": "#dc2626",
+        "opacity": 0.50,
+        "hazard_marker": true
+      }
+    },
+    {
+      "title": "South Bowl Overdevelopment Risk",
+      "description": "When cloud cover rises above 65% over the South Bowl, thermals become erratic and overdevelopment cumulus may produce strong inflow. Abort approach if bases are below 2100m AGL.",
+      "confidence": 0.68,
+      "caution_type": "CAUTION",
+      "conflict_description": "Cloud agent (caution-overdevelopment) partially conflicts with weather agent (moderate thermal index)",
+      "feature_name": "South Bowl",
+      "render_hints": {
+        "color": "#f59e0b",
+        "opacity": 0.35,
+        "hazard_marker": true
+      }
+    },
+    {
+      "title": "Tehachapi Creek Cross-Wind Corridor",
+      "description": "Creek drainage channelises afternoon sea breeze from the SW. Unexpected directional shear at 1280–1350m AMSL, particularly between 14:00–17:00 local. Affect transitions between main ridge and landing zone.",
+      "confidence": 0.57,
+      "caution_type": "CAUTION",
+      "conflict_description": null,
+      "feature_name": "Tehachapi Creek Drainage",
+      "render_hints": {
+        "color": "#f59e0b",
+        "opacity": 0.28,
+        "hazard_marker": false
+      }
+    },
+    {
+      "title": "High Wind Advisory — Main Launch",
+      "description": "Surface winds at Eagle Ridge Main Launch > 30 km/h. Launch is not recommended. Ground handling practice only.",
+      "confidence": 0.91,
+      "caution_type": "CAUTION",
+      "conflict_description": null,
+      "feature_name": "Eagle Ridge Main Launch",
+      "render_hints": {
+        "color": "#dc2626",
+        "opacity": 0.60,
+        "hazard_marker": true
+      }
+    }
+  ]
+}

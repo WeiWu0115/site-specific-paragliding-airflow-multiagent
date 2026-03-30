@@ -1,0 +1,288 @@
+{
+  "site_id": "eagle_ridge",
+  "session_id": 42,
+  "generated_at": "2025-06-15T12:00:00Z",
+  "coordinate_system": "WGS84",
+  "time_range": {
+    "from": "2025-06-15T06:00:00Z",
+    "to": "2025-06-15T20:00:00Z"
+  },
+  "terrain": {
+    "launches": [
+      {
+        "id": "eagle_ridge_main",
+        "name": "Eagle Ridge Main Launch",
+        "lat": 35.492,
+        "lon": -118.187,
+        "elevation_m": 1340,
+        "facing_direction": "SW",
+        "facing_degrees": 225,
+        "optimal_wind_dir_deg": [190, 240],
+        "optimal_wind_speed_kmh": [12, 28],
+        "notes": "Primary launch. Requires 12–28 km/h SW wind. Clear of trees on all sides."
+      },
+      {
+        "id": "north_bowl_launch",
+        "name": "North Bowl High Launch",
+        "lat": 35.498,
+        "lon": -118.183,
+        "elevation_m": 1410,
+        "facing_direction": "NW",
+        "facing_degrees": 315,
+        "optimal_wind_dir_deg": [280, 340],
+        "optimal_wind_speed_kmh": [10, 22],
+        "notes": "Alternative NW window. Shorter soarable day. Good for morning flights."
+      }
+    ],
+    "landings": [
+      {
+        "id": "valley_lz_main",
+        "name": "Valley LZ — Main Field",
+        "lat": 35.478,
+        "lon": -118.192,
+        "elevation_m": 1080,
+        "surface": "grass",
+        "notes": "Primary LZ. Flat, 200m diameter. Check for afternoon thermal dust devils."
+      }
+    ],
+    "features": [
+      {
+        "id": "eagle_ridge_main_feature",
+        "type": "ridge",
+        "name": "Eagle Ridge Main",
+        "description": "Primary SW-facing ridge producing consistent ridge lift at 12–28 km/h SW winds.",
+        "attributes": { "facing_degrees": 225, "length_m": 2200, "height_above_valley_m": 260 }
+      },
+      {
+        "id": "south_bowl",
+        "type": "bowl",
+        "name": "South Bowl",
+        "description": "Concave south-facing bowl that concentrates afternoon thermals.",
+        "attributes": { "facing_degrees": 180, "depth_m": 120 }
+      },
+      {
+        "id": "west_lee_sink",
+        "type": "lee_zone",
+        "name": "West Lee Sink Zone",
+        "description": "Mechanical turbulence in the lee of Pine Tree Line. Avoid when W > 20 km/h.",
+        "attributes": { "risk_level": "high" }
+      }
+    ],
+    "terrain_mesh_url": null
+  },
+  "thermal_zones": [
+    {
+      "id": "tz_001",
+      "name": "South Bowl Thermal",
+      "confidence": 0.72,
+      "uncertainty": 0.28,
+      "evidence_count": 4,
+      "evidence_sources": ["weather_agent", "terrain_agent", "flight_history_agent", "local_knowledge_agent"],
+      "polygon_geojson": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-118.194, 35.485],
+          [-118.188, 35.483],
+          [-118.182, 35.487],
+          [-118.185, 35.492],
+          [-118.192, 35.491],
+          [-118.194, 35.485]
+        ]]
+      },
+      "elevation_center_m": 1480,
+      "valid_hours": [10, 11, 12, 13, 14, 15],
+      "agent_sources": ["weather", "terrain", "flight_history"],
+      "notes": "South-facing bowl, sheltered. Triggers when spread > 8°C.",
+      "render_hints": {
+        "color": "#f97316",
+        "opacity": 0.55,
+        "particle_density": "medium"
+      }
+    }
+  ],
+  "ridge_corridors": [
+    {
+      "id": "rc_001",
+      "name": "Eagle Ridge Main Corridor",
+      "confidence": 0.81,
+      "uncertainty": 0.19,
+      "evidence_count": 5,
+      "line_geojson": {
+        "type": "LineString",
+        "coordinates": [
+          [-118.198, 35.495, 1380],
+          [-118.193, 35.493, 1400],
+          [-118.188, 35.492, 1420],
+          [-118.183, 35.490, 1410],
+          [-118.178, 35.488, 1390]
+        ]
+      },
+      "elevation_m": 1420,
+      "valid_hours": [9, 10, 11, 12, 13, 14, 15, 16],
+      "agent_sources": ["terrain", "weather", "local_knowledge"],
+      "notes": "SW-facing primary ridge. Best lift at 190–240°, 12–28 km/h.",
+      "render_hints": {
+        "color": "#10b981",
+        "opacity": 0.65,
+        "arrow_density": "dense"
+      }
+    }
+  ],
+  "caution_zones": [
+    {
+      "title": "West Lee Sink — Rotor Risk",
+      "description": "Mechanical turbulence in the lee of Pine Tree Line. Active when westerly > 20 km/h.",
+      "confidence": 0.82,
+      "caution_type": "ROTOR_RISK",
+      "conflict_description": null,
+      "feature_name": "West Lee Sink Zone",
+      "render_hints": {
+        "color": "#dc2626",
+        "opacity": 0.50,
+        "hazard_marker": true
+      }
+    }
+  ],
+  "climb_hotspots": [
+    {
+      "id": "ch_001",
+      "name": "South Bowl Primary Trigger",
+      "lat": 35.487,
+      "lon": -118.188,
+      "elevation_m": 1465,
+      "avg_climb_ms": 2.1,
+      "max_climb_ms": 3.8,
+      "flight_count": 12,
+      "confidence": 0.74,
+      "radius_m": 180,
+      "valid_hours": [11, 12, 13, 14],
+      "notes": "Most consistent climb entry in South Bowl.",
+      "render_hints": {
+        "color": "#f97316",
+        "opacity": 0.70,
+        "particle_density": "high"
+      }
+    }
+  ],
+  "recommendations": [
+    {
+      "rank": 1,
+      "type": "LAUNCH_WINDOW",
+      "title": "Optimal Window: 11:00–14:00 UTC",
+      "description": "Thermal index peaks at 0.68 by 12:00 UTC. SW 15 km/h ideal for Eagle Ridge Main. South Bowl trigger active.",
+      "confidence": 0.74,
+      "uncertainty_note": "Cloud overdevelopment possible after 14:00.",
+      "evidence_summary": [
+        "Temp–dew spread 11°C at 12:00",
+        "Wind 210° at 15 km/h — within optimal window",
+        "12 historical tracks confirm South Bowl active in this window"
+      ]
+    },
+    {
+      "rank": 2,
+      "type": "THERMAL_ZONE",
+      "title": "South Bowl — Primary Thermal Zone",
+      "description": "High-confidence thermal zone. Start thermalling at NE edge, work upwind to gain height before transitioning.",
+      "confidence": 0.72,
+      "uncertainty_note": null,
+      "evidence_summary": [
+        "Terrain: south-facing bowl concentrates surface heating",
+        "Weather: spread 11°C, cloud 35%, wind 15 km/h",
+        "Flight history: avg 2.1 m/s climb over 12 tracks"
+      ]
+    },
+    {
+      "rank": 3,
+      "type": "CAUTION",
+      "title": "Avoid West Lee Sink after 15:00",
+      "description": "Sea breeze intensification predicted after 15:00 UTC increases rotor risk in the Pine Tree Line lee.",
+      "confidence": 0.78,
+      "uncertainty_note": "Sea breeze timing uncertain ± 1 hour.",
+      "evidence_summary": [
+        "Weather: wind increases to 24 km/h by 16:00",
+        "Terrain: 30m tree obstacle creates mechanical turbulence",
+        "Risk agent: conflict with terrain agent — conservative arbitration applied"
+      ]
+    }
+  ],
+  "agent_layers": {
+    "weather": {
+      "active": true,
+      "claim_count": 6,
+      "claims": [
+        {
+          "claim_type": "LAUNCH_WINDOW",
+          "claim_text": "Optimal launch window 11:00–14:00 UTC based on thermal index 0.68 and wind 15 km/h SW",
+          "confidence": 0.74
+        },
+        {
+          "claim_type": "CAUTION",
+          "claim_text": "High wind advisory: gusts may exceed 35 km/h after 16:00 UTC",
+          "confidence": 0.61
+        }
+      ]
+    },
+    "terrain": {
+      "active": true,
+      "claim_count": 4,
+      "claims": [
+        {
+          "claim_type": "RIDGE_LIFT",
+          "claim_text": "Eagle Ridge Main supports ridge lift at current wind 210° / 15 km/h",
+          "confidence": 0.81
+        },
+        {
+          "claim_type": "ROTOR_RISK",
+          "claim_text": "West Lee Sink Zone: rotor conditions when westerly component > 20 km/h",
+          "confidence": 0.78
+        }
+      ]
+    },
+    "cloud": {
+      "active": true,
+      "claim_count": 2,
+      "claims": [
+        {
+          "claim_type": "THERMAL_ZONE",
+          "claim_text": "Cloud cover 35%, cumulus type, base 2100m — moderate thermal development",
+          "confidence": 0.65
+        }
+      ]
+    },
+    "local_knowledge": {
+      "active": true,
+      "claim_count": 3,
+      "claims": [
+        {
+          "claim_type": "THERMAL_ZONE",
+          "claim_text": "South Bowl triggers when spread > 8°C — confirmed by site expert",
+          "confidence": 0.80
+        }
+      ]
+    },
+    "flight_history": {
+      "active": true,
+      "claim_count": 5,
+      "claims": [
+        {
+          "claim_type": "THERMAL_ZONE",
+          "claim_text": "12 historical flights show avg 2.1 m/s climb at South Bowl 35.487°N 118.188°W",
+          "confidence": 0.70
+        }
+      ]
+    },
+    "risk": {
+      "active": true,
+      "claim_count": 2,
+      "claims": [
+        {
+          "claim_type": "CAUTION",
+          "claim_text": "Conflict detected: weather agent (caution) vs terrain agent (neutral) over West Lee Sink",
+          "confidence": 0.82
+        }
+      ]
+    }
+  },
+  "uncertainty_summary": "Moderate confidence overall (avg 0.72). Primary uncertainty: afternoon sea breeze timing (±1h) and cloud overdevelopment threshold. Flight history cluster confidence limited by 12 tracks; more data will improve thermal zone precision.",
+  "advisory_disclaimer": "ADVISORY ONLY — NOT FOR OPERATIONAL USE. This overlay is generated by an experimental multi-agent research system. It does not replace a qualified flight briefing, site check, or instructor assessment. Conditions change rapidly. Always exercise independent pilot judgment and fly within your personal limits."
+}

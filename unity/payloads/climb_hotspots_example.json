@@ -1,0 +1,63 @@
+{
+  "site_id": "eagle_ridge",
+  "generated_at": "2025-06-15T12:00:00Z",
+  "climb_hotspots": [
+    {
+      "id": "ch_001",
+      "name": "South Bowl Primary Trigger",
+      "lat": 35.487,
+      "lon": -118.188,
+      "elevation_m": 1465,
+      "avg_climb_ms": 2.1,
+      "max_climb_ms": 3.8,
+      "flight_count": 12,
+      "confidence": 0.74,
+      "radius_m": 180,
+      "valid_hours": [11, 12, 13, 14],
+      "notes": "Most consistent climb entry point in the South Bowl. Start at NE edge and work upwind.",
+      "render_hints": {
+        "color": "#f97316",
+        "opacity": 0.70,
+        "particle_density": "high"
+      }
+    },
+    {
+      "id": "ch_002",
+      "name": "Eagle Ridge Crest Bubble",
+      "lat": 35.492,
+      "lon": -118.187,
+      "elevation_m": 1490,
+      "avg_climb_ms": 1.6,
+      "max_climb_ms": 2.9,
+      "flight_count": 8,
+      "confidence": 0.62,
+      "radius_m": 120,
+      "valid_hours": [10, 11, 12, 13, 14, 15],
+      "notes": "Thermal bubble breaks off the ridge crest. Merge with ridge lift for height gain before crossing.",
+      "render_hints": {
+        "color": "#f97316",
+        "opacity": 0.50,
+        "particle_density": "medium"
+      }
+    },
+    {
+      "id": "ch_003",
+      "name": "Caliente East Thermal",
+      "lat": 35.494,
+      "lon": -118.170,
+      "elevation_m": 1380,
+      "avg_climb_ms": 1.3,
+      "max_climb_ms": 2.2,
+      "flight_count": 4,
+      "confidence": 0.48,
+      "radius_m": 200,
+      "valid_hours": [12, 13, 14, 15],
+      "notes": "Lower confidence — fewer flight tracks. Thermal is wide and gentle. Good escape route eastward.",
+      "render_hints": {
+        "color": "#f59e0b",
+        "opacity": 0.32,
+        "particle_density": "low"
+      }
+    }
+  ]
+}

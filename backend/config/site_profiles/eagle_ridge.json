@@ -1,0 +1,413 @@
+{
+  "id": "eagle_ridge",
+  "name": "Eagle Ridge Flying Site",
+  "description": "A classic mountain thermal and ridge-soaring site in the Tehachapi Mountains of Kern County, California. Eagle Ridge offers reliable afternoon thermals fed by the sun-heated Tehachapi Valley floor and Caliente Creek drainage to the south. The main launch faces southwest at 1,340m and provides direct access to the primary ridge system. The site is known for dependable summer thermals between 10am and 3pm, with a distinct morning blue-thermal window on clear days when wind is light SW. Expert pilots use the South Bowl as a reliable relaunch thermal in late morning. The Tehachapi Riverbed drainage triggers the first organized thermal of the day on sunny mornings, typically around 9:30-10:30 local time. Site requires P3 or higher rating and site-specific orientation with a local club member.",
+  "location": {
+    "lat": 35.492,
+    "lon": -118.187,
+    "elevation_m": 1340,
+    "timezone": "America/Los_Angeles",
+    "county": "Kern County",
+    "state": "California"
+  },
+  "boundary": {
+    "type": "Polygon",
+    "coordinates": [[
+      [-118.225, 35.475],
+      [-118.155, 35.475],
+      [-118.155, 35.515],
+      [-118.225, 35.515],
+      [-118.225, 35.475]
+    ]]
+  },
+  "launches": [
+    {
+      "id": "launch_main",
+      "name": "Eagle Ridge Main Launch",
+      "lat": 35.492,
+      "lon": -118.187,
+      "elevation_m": 1340,
+      "facing_direction": "SW",
+      "facing_degrees": 225,
+      "optimal_wind_dir_deg": [200, 250],
+      "optimal_wind_speed_kmh": [12, 22],
+      "notes": "Primary launch. Wide, grassy ramp with 180-degree view of the valley. Ideal for SW wind 12-22 km/h. Requires clear rotor reading of the low pine tree line 80m below before committing. Boot-and-fly slope angle approximately 28 degrees."
+    },
+    {
+      "id": "launch_north",
+      "name": "North Notch Launch",
+      "lat": 35.504,
+      "lon": -118.193,
+      "elevation_m": 1285,
+      "facing_direction": "NW",
+      "facing_degrees": 315,
+      "optimal_wind_dir_deg": [290, 340],
+      "optimal_wind_speed_kmh": [10, 18],
+      "notes": "Secondary launch used when wind goes NW-N. Narrower ramp, rocky on left side. Access via 20-minute hike from main launch parking. Best in spring when NW flow comes through. Good early morning glass-off option in summer."
+    },
+    {
+      "id": "launch_bowl",
+      "name": "South Bowl Top",
+      "lat": 35.481,
+      "lon": -118.175,
+      "elevation_m": 1210,
+      "facing_direction": "S",
+      "facing_degrees": 180,
+      "optimal_wind_dir_deg": [160, 210],
+      "optimal_wind_speed_kmh": [8, 16],
+      "notes": "Auxiliary launch inside the South Bowl. Used by experienced pilots for quick relaunch thermal access when flying from the valley. Not suitable as a primary first-flight launch. Strong thermal suck possible; conservative speeds recommended on final approach."
+    }
+  ],
+  "landings": [
+    {
+      "id": "lz_main",
+      "name": "Valley Main LZ",
+      "lat": 35.472,
+      "lon": -118.196,
+      "elevation_m": 820,
+      "size_m": [120, 80],
+      "surface": "grass/gravel mix",
+      "notes": "Primary landing zone. Large flat field beside the Caliente Creek Road. Entry from the north preferred to avoid orchard fence to the south. Power lines 200m to the east — maintain awareness on final. Windsock on the north corner."
+    },
+    {
+      "id": "lz_emergency",
+      "name": "Riverbed Emergency LZ",
+      "lat": 35.480,
+      "lon": -118.205,
+      "elevation_m": 875,
+      "size_m": [200, 40],
+      "surface": "dry river gravel",
+      "notes": "Emergency landing zone in the Tehachapi Creek dry riverbed. Wide but rocky substrate — PLF recommended. Use only when unable to reach main LZ. Accessible by vehicle via the dirt access road from Highway 58 overpass."
+    }
+  ],
+  "terrain_features": [
+    {
+      "id": "tf_eagle_ridge_main",
+      "type": "ridge",
+      "name": "Eagle Ridge Main",
+      "description": "The primary NE-SW ridge line. Approximately 3.2km long running from peak at 1,410m down to 1,180m at the NE end. Western face is the main soaring wall. Wind from 200-260 degrees produces reliable ridge lift on the main face at 10-25 km/h.",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [-118.155, 35.508],
+          [-118.175, 35.499],
+          [-118.187, 35.492],
+          [-118.200, 35.484],
+          [-118.210, 35.478]
+        ]
+      },
+      "attributes": {
+        "orientation_deg": 225,
+        "length_km": 3.2,
+        "crest_elevation_m": 1410,
+        "face_direction": "SW",
+        "aspect_deg": 225,
+        "slope_deg_avg": 32,
+        "vegetation": "sparse pine and scrub oak",
+        "wind_range_for_lift_kmh": [10, 28]
+      }
+    },
+    {
+      "id": "tf_south_bowl",
+      "type": "bowl",
+      "name": "South Bowl",
+      "description": "A broad south-facing concave bowl approximately 800m wide and 300m deep. Catches early morning solar heating and reliably fires the first thermal of the day on clear summer mornings. Bowl bottom at ~1,050m. Bowl rim at ~1,280m.",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-118.168, 35.476],
+          [-118.155, 35.476],
+          [-118.155, 35.488],
+          [-118.168, 35.488],
+          [-118.175, 35.483],
+          [-118.168, 35.476]
+        ]]
+      },
+      "attributes": {
+        "aspect_deg": 185,
+        "bowl_bottom_elevation_m": 1050,
+        "rim_elevation_m": 1280,
+        "width_m": 800,
+        "depth_m": 300,
+        "thermal_trigger_time_local": "09:30-11:00",
+        "vegetation": "mixed scrub, some bare limestone outcrops"
+      }
+    },
+    {
+      "id": "tf_tehachapi_riverbed",
+      "type": "riverbed",
+      "name": "Tehachapi Creek Drainage",
+      "description": "The dry Tehachapi Creek bed running NW to SE at the base of the mountain. Light-colored gravel and sand surface heats rapidly in morning sun, creating the first organized thermal trigger on typical summer days. Thermal street often develops along this drainage axis from ~10am.",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [-118.220, 35.479],
+          [-118.205, 35.480],
+          [-118.190, 35.476],
+          [-118.175, 35.472],
+          [-118.160, 35.475]
+        ]
+      },
+      "attributes": {
+        "orientation_deg": 135,
+        "width_m": 60,
+        "surface": "light gravel and sand",
+        "elevation_m": 870,
+        "thermal_trigger_time_local": "09:30-11:00",
+        "thermal_type": "convective_heating"
+      }
+    },
+    {
+      "id": "tf_north_valley",
+      "type": "valley",
+      "name": "North Valley",
+      "description": "The broad valley floor north of Eagle Ridge, approximately 2km wide. In strong thermal conditions, valley thermals drift south and cross the ridge, reinforcing ridge lift. In SW wind above 25 km/h the valley produces venturi acceleration through the ridge notch.",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-118.225, 35.505],
+          [-118.155, 35.505],
+          [-118.155, 35.515],
+          [-118.225, 35.515],
+          [-118.225, 35.505]
+        ]]
+      },
+      "attributes": {
+        "elevation_m": 780,
+        "width_km": 2.0,
+        "valley_axis_deg": 90,
+        "hazard": "venturi acceleration when SW > 25 km/h"
+      }
+    },
+    {
+      "id": "tf_pine_tree_line",
+      "type": "tree_line",
+      "name": "Lower Pine Tree Line",
+      "description": "A dense band of Jeffery pines running along the 1,100-1,150m contour approximately 80m below the main launch. Creates rotor and mechanical turbulence in SW wind above 20 km/h. Critical hazard zone for takeoff assessment.",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [-118.178, 35.497],
+          [-118.190, 35.490],
+          [-118.200, 35.483]
+        ]
+      },
+      "attributes": {
+        "elevation_m": 1125,
+        "tree_height_m": 18,
+        "rotor_risk": true,
+        "rotor_wind_threshold_kmh": 20,
+        "rotor_depth_m": 40
+      }
+    },
+    {
+      "id": "tf_west_lee_zone",
+      "type": "sink_zone",
+      "name": "West Lee Sink Zone",
+      "description": "The area immediately west and NW of Eagle Ridge peak, in the rotor shadow of the main ridge in SW wind. Pilots who drift too far west in strong SW conditions encounter strong sink and mechanical turbulence. Historical incident zone. Avoid in SW > 18 km/h.",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-118.205, 35.492],
+          [-118.220, 35.492],
+          [-118.220, 35.505],
+          [-118.205, 35.505],
+          [-118.205, 35.492]
+        ]]
+      },
+      "attributes": {
+        "hazard_type": "rotor_and_sink",
+        "wind_trigger_dir_deg": [200, 260],
+        "wind_trigger_speed_kmh": 18,
+        "avg_sink_rate_ms": -3.5,
+        "incident_reports": 2
+      }
+    },
+    {
+      "id": "tf_caliente_slope",
+      "type": "ridge",
+      "name": "Caliente East Spur",
+      "description": "A subsidiary SE-facing spur that branches off Eagle Ridge at the 1,200m point. In SE wind it provides a secondary soaring wall and can be used for low saves. In dominant SW wind it creates a venturi corridor between itself and the main ridge.",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [-118.175, 35.483],
+          [-118.165, 35.477],
+          [-118.158, 35.472]
+        ]
+      },
+      "attributes": {
+        "orientation_deg": 135,
+        "length_km": 1.1,
+        "crest_elevation_m": 1200,
+        "face_direction": "SE",
+        "aspect_deg": 135,
+        "slope_deg_avg": 28,
+        "wind_range_for_lift_kmh": [8, 20]
+      }
+    }
+  ],
+  "dominant_wind": {
+    "summer": "SW 10-18 mph, peak afternoon gusts to 25 mph",
+    "winter": "NW 8-15 mph, occasional N flow events",
+    "spring": "Variable, frequent S-SW, some strong gradient flow days",
+    "fall": "SW dominant, clean thermic days in September-October",
+    "transition": "Variable, watch for rotor in confused directions"
+  },
+  "seasonal_notes": {
+    "spring": "March-May: Best thermal variety. South-facing Bowl fires early. NW launches available. Spring gradient flow days can bring strong NW 25+ — check upper-level winds. Convergence possible on sea breeze days when inland heating is strong.",
+    "summer": "June-August: Most reliable thermal season. Classic 10am-3pm window. Riverbed trigger consistent on sunny mornings. Valley thermal streets common. Watch for overdevelopment on humid days (rare but possible with monsoon moisture from SW). Santa Ana precursors can bring NE flow.",
+    "fall": "September-November: September is often the best flying month. Clean air, moderate thermals, good visibility. October sees shorter thermal windows. November winds increase. Santa Ana events common — strong, dry NE flow, often un-flyable.",
+    "winter": "December-February: Occasional blue-thermal days. Primarily ridge soaring when NW flow is present. North Notch Launch is primary option. Thermals weak and inconsistent. Very low humidity. Good for advanced pilots comfortable with ridge soaring in strong wind."
+  },
+  "known_heuristics": [
+    {
+      "id": "h01",
+      "statement": "Tehachapi Creek riverbed triggers the first organized thermal of the day on clear summer mornings, typically between 09:30 and 10:30 local time.",
+      "condition": {
+        "season": "summer",
+        "sky": "clear to partly cloudy",
+        "wind_speed_kmh_max": 15,
+        "time_local": "09:00-11:00"
+      },
+      "sub_region": "Tehachapi Creek Drainage",
+      "confidence": 0.85,
+      "source": "Site instructor consensus, 15+ years observation",
+      "exception": "Does not trigger if cloud cover exceeds 60% or wind is above 15 km/h at launch"
+    },
+    {
+      "id": "h02",
+      "statement": "Eagle Ridge Main provides reliable soaring lift when SW wind is between 12 and 18 km/h at launch elevation. Below 10 km/h lift becomes patchy; above 22 km/h rotor becomes a hazard near the Pine Tree Line.",
+      "condition": {
+        "wind_dir_deg_range": [200, 250],
+        "wind_speed_kmh_range": [12, 18]
+      },
+      "sub_region": "Eagle Ridge Main",
+      "confidence": 0.90,
+      "source": "Head instructor, confirmed by multiple pilot reports",
+      "exception": "Ridge shuts down quickly if wind backs to SE — watch for this during afternoon sea breeze shift"
+    },
+    {
+      "id": "h03",
+      "statement": "South Bowl fires a relaunch thermal around 10:00-11:30 on clear days. Pilots who lose height can often find a climb in the bowl bottom and return to ridge height.",
+      "condition": {
+        "season": ["spring", "summer", "fall"],
+        "sky": "clear to partly cloudy",
+        "time_local": "10:00-12:00"
+      },
+      "sub_region": "South Bowl",
+      "confidence": 0.75,
+      "source": "Experienced local pilot, 8 years site experience",
+      "exception": "Bowl thermal becomes violent and not recommended after 13:00 in summer"
+    },
+    {
+      "id": "h04",
+      "statement": "Never fly west of the ridge crest when SW wind exceeds 18 km/h. The West Lee Zone produces strong sink and mechanical turbulence that has caused collapses in the past.",
+      "condition": {
+        "wind_dir_deg_range": [200, 260],
+        "wind_speed_kmh_min": 18
+      },
+      "sub_region": "West Lee Sink Zone",
+      "confidence": 0.95,
+      "source": "Safety committee recommendation based on incident history",
+      "risk_note": "HIGH RISK — two documented incidents in this area in strong SW conditions"
+    },
+    {
+      "id": "h05",
+      "statement": "On hot summer afternoons (14:00+), thermal activity becomes strong and punchy. P3 minimum skill recommended. Thermals narrow, fast-coring, and can produce significant collapses on older gliders.",
+      "condition": {
+        "season": "summer",
+        "time_local": "14:00-16:30",
+        "temp_c_min": 32
+      },
+      "sub_region": "site-wide",
+      "confidence": 0.80,
+      "source": "Site committee safety review",
+      "risk_note": "Advanced conditions — evaluate glider certification and personal skill before afternoon flights"
+    },
+    {
+      "id": "h06",
+      "statement": "A thermal street develops from the Riverbed trigger point and tracks NE in SW wind, allowing cross-country pilots to gain height and transition east toward the Tehachapi Pass area.",
+      "condition": {
+        "wind_dir_deg_range": [210, 245],
+        "wind_speed_kmh_range": [12, 20],
+        "season": ["summer", "fall"],
+        "time_local": "11:00-14:00"
+      },
+      "sub_region": "Tehachapi Creek Drainage",
+      "confidence": 0.70,
+      "source": "XC pilot observations, approximately 12 documented flights",
+      "exception": "Street only forms when cloud base is above 2,200m; flat light days show no organized street"
+    },
+    {
+      "id": "h07",
+      "statement": "North Notch Launch is best in NW wind 10-16 km/h. Below 10 km/h is too light for a safe launch from the narrow ramp. Above 18 km/h the rotor from the upwind peak creates turbulence immediately after launch.",
+      "condition": {
+        "wind_dir_deg_range": [290, 340],
+        "wind_speed_kmh_range": [10, 18]
+      },
+      "sub_region": "North Notch Launch",
+      "confidence": 0.85,
+      "source": "Launch marshal observations, confirmed by instructors"
+    },
+    {
+      "id": "h08",
+      "statement": "When cumulus clouds are forming over the valley floor (base around 2,000-2,200m), the best climb rate is typically found over the Riverbed drainage and the South Bowl area, not directly on the main ridge face.",
+      "condition": {
+        "cloud_type": "cumulus",
+        "cloud_base_m_range": [2000, 2400],
+        "time_local": "10:30-13:30"
+      },
+      "sub_region": "South Bowl, Tehachapi Creek Drainage",
+      "confidence": 0.72,
+      "source": "Multiple experienced pilot observations over 3 seasons",
+      "exception": "If wind direction is precisely SW at 12-16 km/h, ridge face thermals can be equally strong"
+    },
+    {
+      "id": "h09",
+      "statement": "Glass-off conditions occur most reliably in summer between 17:30 and 19:00 local time, once sea breeze has fully backed to SW and thermal strength has dropped. Light ridge soaring is often possible even as thermals fade.",
+      "condition": {
+        "season": "summer",
+        "time_local": "17:30-19:00",
+        "wind_speed_kmh_max": 12
+      },
+      "sub_region": "Eagle Ridge Main",
+      "confidence": 0.68,
+      "source": "Site instructor observations, 10+ years",
+      "exception": "Does not occur on days with strong thermal activity that persists into evening"
+    },
+    {
+      "id": "h10",
+      "statement": "The Caliente East Spur can be used for low saves in SE wind at 8-16 km/h. It is often overlooked by visitors who focus on the main ridge, but local pilots routinely use it to regain height when flushed low.",
+      "condition": {
+        "wind_dir_deg_range": [115, 160],
+        "wind_speed_kmh_range": [8, 16]
+      },
+      "sub_region": "Caliente East Spur",
+      "confidence": 0.65,
+      "source": "Local pilot, 6 years experience at site",
+      "exception": "The corridor between the East Spur and Main Ridge creates a venturi in strong SE — avoid in SE > 20 km/h"
+    }
+  ],
+  "risk_notes": [
+    "West Lee Zone: rotor/sink hazard in SW wind > 18 km/h. Two documented incidents.",
+    "Pine Tree Line: mechanical turbulence generator in SW > 20 km/h. Must assess before launching.",
+    "South Bowl afternoon thermals (post-14:00 summer): strong, punchy, narrow cores — advanced skills required.",
+    "Valley venturi: NW ridge notch can accelerate wind significantly in strong gradient flow — can exceed launch limits.",
+    "Power lines: 200m east of Main LZ. Critical on final approach.",
+    "Late-season Santa Ana events (Oct-Nov): NE flow, very strong, dry, site un-flyable.",
+    "Orchard fence: south end of Main LZ — approach from north."
+  ],
+  "weather_station_nearby": {
+    "name": "Tehachapi Municipal Airport ASOS",
+    "icao": "KTSP",
+    "distance_km": 8.5,
+    "elevation_m": 1220,
+    "notes": "KTSP data is useful for general wind direction and temperature but may not reflect site-specific conditions due to valley orientation differences. Always cross-check with on-site windsock and pilot reports."
+  },
+  "emergency_contacts": {
+    "site_coordinator": "Eagle Ridge Flying Club — see club website",
+    "emergency": "911",
+    "nearest_hospital_km": 24
+  }
+}

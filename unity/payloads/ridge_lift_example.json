@@ -1,0 +1,80 @@
+{
+  "site_id": "eagle_ridge",
+  "generated_at": "2025-06-15T12:00:00Z",
+  "ridge_corridors": [
+    {
+      "id": "rc_001",
+      "name": "Eagle Ridge Main Corridor",
+      "confidence": 0.81,
+      "uncertainty": 0.19,
+      "evidence_count": 5,
+      "line_geojson": {
+        "type": "LineString",
+        "coordinates": [
+          [-118.198, 35.495, 1380],
+          [-118.193, 35.493, 1400],
+          [-118.188, 35.492, 1420],
+          [-118.183, 35.490, 1410],
+          [-118.178, 35.488, 1390]
+        ]
+      },
+      "elevation_m": 1420,
+      "valid_hours": [9, 10, 11, 12, 13, 14, 15, 16],
+      "agent_sources": ["terrain", "weather", "local_knowledge"],
+      "notes": "SW-facing primary ridge. Ridge lift onset when wind 190–240° at 12–28 km/h. Best band 1380–1520m AMSL.",
+      "render_hints": {
+        "color": "#10b981",
+        "opacity": 0.65,
+        "arrow_density": "dense"
+      }
+    },
+    {
+      "id": "rc_002",
+      "name": "Caliente East Spur Ridge",
+      "confidence": 0.61,
+      "uncertainty": 0.39,
+      "evidence_count": 3,
+      "line_geojson": {
+        "type": "LineString",
+        "coordinates": [
+          [-118.172, 35.496, 1360],
+          [-118.168, 35.493, 1370],
+          [-118.164, 35.490, 1355]
+        ]
+      },
+      "elevation_m": 1365,
+      "valid_hours": [10, 11, 12, 13, 14, 15],
+      "agent_sources": ["terrain", "weather"],
+      "notes": "Secondary east spur. Useful when main ridge is overdeveloped. Narrower lift band, 60m tolerance.",
+      "render_hints": {
+        "color": "#10b981",
+        "opacity": 0.42,
+        "arrow_density": "sparse"
+      }
+    },
+    {
+      "id": "rc_003",
+      "name": "Pine Tree Line Rotor Buffer",
+      "confidence": 0.55,
+      "uncertainty": 0.45,
+      "evidence_count": 2,
+      "line_geojson": {
+        "type": "LineString",
+        "coordinates": [
+          [-118.203, 35.494, 1350],
+          [-118.198, 35.498, 1360],
+          [-118.192, 35.501, 1355]
+        ]
+      },
+      "elevation_m": 1355,
+      "valid_hours": [10, 11, 12, 13, 14],
+      "agent_sources": ["terrain", "risk"],
+      "notes": "Use the windward side only. Lee of tree line generates rotor (see caution zones). Approach from SW.",
+      "render_hints": {
+        "color": "#6366f1",
+        "opacity": 0.35,
+        "arrow_density": "sparse"
+      }
+    }
+  ]
+}

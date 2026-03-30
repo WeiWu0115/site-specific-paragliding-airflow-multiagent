@@ -1,0 +1,89 @@
+{
+  "site_id": "eagle_ridge",
+  "generated_at": "2025-06-15T12:00:00Z",
+  "thermal_zones": [
+    {
+      "id": "tz_001",
+      "name": "South Bowl Thermal",
+      "confidence": 0.72,
+      "uncertainty": 0.28,
+      "evidence_count": 4,
+      "evidence_sources": ["weather_agent", "terrain_agent", "flight_history_agent", "local_knowledge_agent"],
+      "polygon_geojson": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-118.194, 35.485],
+          [-118.188, 35.483],
+          [-118.182, 35.487],
+          [-118.185, 35.492],
+          [-118.192, 35.491],
+          [-118.194, 35.485]
+        ]]
+      },
+      "elevation_center_m": 1480,
+      "valid_hours": [10, 11, 12, 13, 14, 15],
+      "agent_sources": ["weather", "terrain", "flight_history"],
+      "notes": "South-facing bowl, sheltered. Triggers when temp-dewpoint spread > 8°C. Peak activity 12:00–14:00 UTC.",
+      "render_hints": {
+        "color": "#f97316",
+        "opacity": 0.55,
+        "particle_density": "medium"
+      }
+    },
+    {
+      "id": "tz_002",
+      "name": "Tehachapi Creek Drainage Thermal",
+      "confidence": 0.58,
+      "uncertainty": 0.42,
+      "evidence_count": 3,
+      "evidence_sources": ["weather_agent", "terrain_agent", "cloud_agent"],
+      "polygon_geojson": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-118.200, 35.488],
+          [-118.196, 35.482],
+          [-118.190, 35.480],
+          [-118.186, 35.484],
+          [-118.193, 35.490],
+          [-118.200, 35.488]
+        ]]
+      },
+      "elevation_center_m": 1320,
+      "valid_hours": [11, 12, 13, 14],
+      "agent_sources": ["weather", "terrain"],
+      "notes": "Dry creek bed acts as heat collector. Later thermal development due to valley shadow until 10:00.",
+      "render_hints": {
+        "color": "#f97316",
+        "opacity": 0.38,
+        "particle_density": "low"
+      }
+    },
+    {
+      "id": "tz_003",
+      "name": "North Valley Convergence",
+      "confidence": 0.45,
+      "uncertainty": 0.55,
+      "evidence_count": 2,
+      "evidence_sources": ["weather_agent", "flight_history_agent"],
+      "polygon_geojson": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-118.178, 35.502],
+          [-118.170, 35.498],
+          [-118.168, 35.505],
+          [-118.176, 35.508],
+          [-118.178, 35.502]
+        ]]
+      },
+      "elevation_center_m": 1250,
+      "valid_hours": [13, 14, 15, 16],
+      "agent_sources": ["weather", "flight_history"],
+      "notes": "Convergence zone between valley sea breeze and slope thermal. Patchy and variable.",
+      "render_hints": {
+        "color": "#f59e0b",
+        "opacity": 0.30,
+        "particle_density": "low"
+      }
+    }
+  ]
+}
