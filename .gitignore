@@ -13,8 +13,10 @@ var/
 sdist/
 develop-eggs/
 .installed.cfg
-lib/
-lib64/
+# Python build artifacts (not frontend src/lib/)
+/lib/
+/lib64/
+!frontend/web/src/lib/
 .eggs/
 *.pyo
 .pytest_cache/
